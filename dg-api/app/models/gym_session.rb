@@ -12,4 +12,5 @@
 class GymSession < ApplicationRecord
   belongs_to :gym_area
   has_many :gym_registrations, dependent: :destroy
+  has_many :gym_members, through: :gym_registrations
 end

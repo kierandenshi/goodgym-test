@@ -1,5 +1,5 @@
 class GymSessionsController < ApplicationController
   def index
-    @gym_sessions = GymSession.all
+    @gym_sessions = GymSession.includes(:gym_members).all
   end
 end
