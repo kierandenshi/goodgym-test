@@ -1,1 +1,15 @@
+.app-header {
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+}
 
+.app-login {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.app-body {
+  padding: 1rem 2rem;
+}

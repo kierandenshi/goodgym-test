@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Avatar from './Avatar';
 import './SessionCard.css';
 
-// TODO: clean up double use of Array.find
 export default function SessionCard({ session: { name, area, goodgymers }, currentUser }) {
   return (
     <div className='card'>
@@ -25,14 +24,17 @@ export default function SessionCard({ session: { name, area, goodgymers }, curre
           </div>
           <div>{attendanceString(goodgymers, currentUser)}</div>
         </> : null}
-        {!goodgymers.find(goodgymer => goodgymer.id === currentUser) ? <button>Register</button> : null}
+        {isAttending(goodgymers, currentUser) ? <button>Cancel</button> : <button>Register</button>}
       </div>
     </div>
   );
 }
 
+function isAttending(goodgymers, currentUser) {
+  return goodgymers.find(goodgymer => goodgymer.id === currentUser);
+}
 function attendanceString(goodgymers, currentUser) {
-  if (goodgymers.find(goodgymer => goodgymer.id === currentUser)) {
+  if (isAttending(goodgymers, currentUser)) {
     return goodgymers.length > 1 ? `You and ${goodgymers.length} other GoodGymers are going` : `You and 1 other GoodGymer is going`;
   }
   return goodgymers.length > 1 ? `${goodgymers.length} GoodGymers are going` : `1 GoodGymer is going`;

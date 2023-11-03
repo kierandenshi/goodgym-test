@@ -25,14 +25,19 @@ function App() {
   }, [])
 
   return currentUser ? (
-    <div className="App">
+    <div className="app">
+      <div className='app-header'>
+        <h1>GoodGym</h1>
+        <div class='app-login'>
+          <span>Sign in as user:</span>
+          <UserSelect users={goodgymers} currentUser={currentUser} onSelect={setCurrentUser} />
+        </div>
+      </div>
 
-
-      <h1>Goodgymers</h1>
-      <UserSelect users={goodgymers} currentUser={currentUser} onSelect={setCurrentUser} />
-
-      <h1>Sessions</h1>
-      {sessions.map((session) => <SessionCard key={session.id} session={session} currentUser={currentUser} />)}
+      <div className='app-body'>
+        <h2>Available sessions</h2>
+        {sessions.map((session) => <SessionCard key={session.id} session={session} currentUser={currentUser} />)}
+      </div>
 
     </div>
   ) : null;
