@@ -1,0 +1,22 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 3.2.2
+
+  NewCops: enable
+
+  Exclude:
+    - Gemfile
+    - Gemfile.lock
+    - Rakefile
+    - bin/**/*
+    - config/**/*
+    - db/**/*
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
