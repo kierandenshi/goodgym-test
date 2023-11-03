@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Avatar from './Avatar';
 import './SessionCard.css';
 
-export default function SessionCard({ session: { name, area, goodgymers }, currentUser }) {
+export default function SessionCard({ session: { id, name, area, goodgymers }, currentUser, joinSession }) {
   return (
     <div className='card'>
       <div className='card-header'>
@@ -24,7 +24,7 @@ export default function SessionCard({ session: { name, area, goodgymers }, curre
           </div>
           <div>{attendanceString(goodgymers, currentUser)}</div>
         </> : null}
-        {isAttending(goodgymers, currentUser) ? <button>Cancel</button> : <button>Register</button>}
+        {isAttending(goodgymers, currentUser) ? <button>Cancel</button> : <button onClick={() => joinSession(id)}>Register</button>}
       </div>
     </div>
   );
@@ -53,5 +53,7 @@ SessionCard.propTypes = {
       first_name: PropTypes.string.isRequired,
       last_name: PropTypes.string.isRequired,
     }))
-  }).isRequired
+  }).isRequired,
+  currentUser: PropTypes.string.isRequired,
+  joinSession: PropTypes.func.isRequired,
 }

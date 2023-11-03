@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import SessionCard from './components/SessionCard';
 import UserSelect from './components/UserSelect';
+import Notices from './components/Notices';
 import './normalize.css';
 import './App.css';
 
@@ -19,10 +20,25 @@ function App() {
   }, [])
 
   useEffect(() => {
+    fetchSessions();
+  }, [])
+
+  function fetchSessions() {
     axios.get(`${baseUrl}/sessions.json`).then((response) => {
       setSessions(response.data);
     });
-  }, [])
+  }
+
+  function joinSession(sessionId) {
+    axios.post(`${baseUrl}/registrations.json`, { gym_member_id: currentUser, gym_session_id: sessionId })
+      .then(() => {
+        fetchSessions();
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
+
 
   return currentUser ? (
     <div className="app">
@@ -36,9 +52,12 @@ function App() {
 
       <div className='app-body'>
         <h2>Available sessions</h2>
-        {sessions.map((session) => <SessionCard key={session.id} session={session} currentUser={currentUser} />)}
+        {sessions.map((session) => <SessionCard key={session.id} session={session} currentUser={currentUser} joinSession={joinSession} />)}
       </div>
 
+      <div className='app-notices'>
+        <Notices notice={'some words'} />
+      </div>
     </div>
   ) : null;
 }
