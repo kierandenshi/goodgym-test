@@ -8,8 +8,12 @@
 .card-title {
   margin-right: 0.5rem;
   padding: 0.25rem 0.5rem;
-  background: grey;
+  background: lightgray;
   border-radius: 5px;
+}
+
+.blue {
+  background-color: aliceblue;
 }
 
 .card-avatars {

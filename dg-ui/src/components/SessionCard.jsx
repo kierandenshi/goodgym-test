@@ -8,7 +8,7 @@ export default function SessionCard({
   return (
     <div className='card'>
       <div className='card-header'>
-        <span className='card-title'>{area.name}</span>
+        <span className='card-title blue'>{area.name}</span>
         <span className='card-title'>{name}</span>
       </div>
       <div className='card-body'>
