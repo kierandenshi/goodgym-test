@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import SessionCard from "./components/SessionCard";
 import UserSelect from "./components/UserSelect";
+import Modal from "./components/Modal";
 import "./App.css";
 
 const baseUrl = "http://localhost:4000";
@@ -9,6 +10,7 @@ function App() {
   const [goodgymers, setGoodgymers] = useState([]);
   const [sessions, setSessions] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
+  const [message, setMessage] = useState(null);
 
   useEffect(() => {
     axios.get(`${baseUrl}/goodgymers.json`).then((response) => {
@@ -34,9 +36,11 @@ function App() {
         gym_session_id: sessionId,
       })
       .then(() => {
+        setMessage("You have successfully joined the session")
         fetchSessions();
       })
       .catch((error) => {
+        setMessage("Unable to complete request, please try again")
         console.log(error);
       });
   }
@@ -45,11 +49,17 @@ function App() {
     axios
       .delete(`${baseUrl}/registrations/${currentUser}/${sessionId}.json`)
       .then(() => {
+        setMessage("You have successfully left the session")
         fetchSessions();
       })
       .catch((error) => {
+        setMessage("Unable to complete request, please try again")
         console.log(error);
       });
+  }
+
+  function closeModal() {
+    setMessage(null);
   }
 
   return currentUser ? (
@@ -77,6 +87,8 @@ function App() {
           />
         ))}
       </div>
+
+      {message ? <Modal message={message} closeModal={closeModal} /> : null}
     </div>
   ) : null;
 }

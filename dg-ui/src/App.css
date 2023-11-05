@@ -1,5 +1,5 @@
 .app-header {
-  padding: 1rem 2rem;
+  padding: 1rem;
   display: flex;
   justify-content: space-between;
 }
@@ -11,5 +11,5 @@
 }
 
 .app-body {
-  padding: 1rem 2rem;
+  padding: 1rem;
 }

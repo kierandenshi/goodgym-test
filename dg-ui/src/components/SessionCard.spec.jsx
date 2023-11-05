@@ -7,7 +7,7 @@ describe("UserSelect test", () => {
     id: "123",
     name: "Mega session",
     description: "This is a mega session",
-    area: { name: "Brighton & Hove" },
+    area: { id: "123", name: "Brighton & Hove" },
     goodgymers: [
       {
         id: "123",

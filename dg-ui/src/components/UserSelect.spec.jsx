@@ -17,7 +17,7 @@ describe("UserSelect test", () => {
   ];
   const onSelect = () => null;
   const component = render(
-    <UserSelect users={users} currentUser={users[0]} onSelect={onSelect} />,
+    <UserSelect users={users} currentUser={users[0].id} onSelect={onSelect} />,
   );
 
   it("should match the component snapshot", () => {

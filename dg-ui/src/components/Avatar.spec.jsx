@@ -4,7 +4,7 @@ import Avatar from "./Avatar";
 
 describe("Avatar test", () => {
   const goodgymer = {
-    id: 123,
+    id: "123",
     first_name: "Kilgore",
     last_name: "Trout",
   };
