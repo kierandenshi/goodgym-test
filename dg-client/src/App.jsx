@@ -11,6 +11,7 @@ function App() {
   const [goodgymers, setGoodgymers] = useState([]);
   const [sessions, setSessions] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
+  const [notice, setNotice] = useState(null);
 
   useEffect(() => {
     axios.get(`${baseUrl}/goodgymers.json`).then((response) => {
@@ -39,12 +40,21 @@ function App() {
       })
   }
 
+  function leaveSession(sessionId) {
+    axios.delete(`${baseUrl}/registrations/${currentUser}/${sessionId}.json`)
+      .then(() => {
+        fetchSessions();
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
 
   return currentUser ? (
     <div className="app">
       <div className='app-header'>
         <h1>GoodGym</h1>
-        <div class='app-login'>
+        <div className='app-login'>
           <span>Sign in as user:</span>
           <UserSelect users={goodgymers} currentUser={currentUser} onSelect={setCurrentUser} />
         </div>
@@ -52,12 +62,21 @@ function App() {
 
       <div className='app-body'>
         <h2>Available sessions</h2>
-        {sessions.map((session) => <SessionCard key={session.id} session={session} currentUser={currentUser} joinSession={joinSession} />)}
+        {sessions.map((session) =>
+          <SessionCard
+            key={session.id}
+            session={session}
+            currentUser={currentUser}
+            joinSession={joinSession}
+            leaveSession={leaveSession}
+          />
+        )}
       </div>
 
-      <div className='app-notices'>
-        <Notices notice={'some words'} />
-      </div>
+      {notice ?
+        <div className='app-notices'>
+          <Notices notice={notice} />
+        </div> : null}
     </div>
   ) : null;
 }

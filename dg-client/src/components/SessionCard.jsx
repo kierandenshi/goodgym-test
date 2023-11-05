@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import Avatar from './Avatar';
 import './SessionCard.css';
 
-export default function SessionCard({ session: { id, name, area, goodgymers }, currentUser, joinSession }) {
+export default function SessionCard({
+  session: { id, name, description, area, goodgymers }, currentUser, joinSession, leaveSession
+}) {
   return (
     <div className='card'>
       <div className='card-header'>
@@ -11,11 +13,7 @@ export default function SessionCard({ session: { id, name, area, goodgymers }, c
         <span className='card-title'>{name}</span>
       </div>
       <div className='card-body'>
-        <p>
-          Etiam porta sem malesuada magna mollis euismod. Aenean eu leo quam.
-          Pellentesque ornare sem lacinia quam venenatis vestibulum. Lorem sociis
-          natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-        </p>
+        <p>{description}</p>
         {goodgymers.length ? <>
           <div className='card-avatars'>
             {goodgymers.map(goodgymer => (
@@ -24,7 +22,7 @@ export default function SessionCard({ session: { id, name, area, goodgymers }, c
           </div>
           <div>{attendanceString(goodgymers, currentUser)}</div>
         </> : null}
-        {isAttending(goodgymers, currentUser) ? <button>Cancel</button> : <button onClick={() => joinSession(id)}>Register</button>}
+        {isAttending(goodgymers, currentUser) ? <button onClick={() => leaveSession(id)}>Leave session</button> : <button onClick={() => joinSession(id)}>Join session</button>}
       </div>
     </div>
   );
@@ -33,9 +31,10 @@ export default function SessionCard({ session: { id, name, area, goodgymers }, c
 function isAttending(goodgymers, currentUser) {
   return goodgymers.find(goodgymer => goodgymer.id === currentUser);
 }
+
 function attendanceString(goodgymers, currentUser) {
   if (isAttending(goodgymers, currentUser)) {
-    return goodgymers.length > 1 ? `You and ${goodgymers.length} other GoodGymers are going` : `You and 1 other GoodGymer is going`;
+    return goodgymers.length > 2 ? `You and ${goodgymers.length -1} other GoodGymers are going` : `You and 1 other GoodGymer is going`;
   }
   return goodgymers.length > 1 ? `${goodgymers.length} GoodGymers are going` : `1 GoodGymer is going`;
 }

@@ -8,6 +8,7 @@
 #  gym_area_id         :uuid             not null
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
+#  description         :text
 #
 
 describe GymSession do

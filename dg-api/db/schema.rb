@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_02_121603) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_03_164421) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -34,6 +34,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_02_121603) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["gym_member_id"], name: "index_gym_registrations_on_gym_member_id"
+    t.index ["gym_session_id", "gym_member_id"], name: "index_gym_registrations_on_gym_session_id_and_gym_member_id", unique: true
     t.index ["gym_session_id"], name: "index_gym_registrations_on_gym_session_id"
   end
 
@@ -43,6 +44,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_02_121603) do
     t.uuid "gym_area_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "description"
     t.index ["gym_area_id"], name: "index_gym_sessions_on_gym_area_id"
   end
 

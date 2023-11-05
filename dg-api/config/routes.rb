@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resources :gym_members, path: 'goodgymers', only: :index
   resources :gym_sessions, path: 'sessions', only: :index
   resources :gym_registrations, path: 'registrations'
+  delete 'registrations/:member_id/:session_id', to: 'gym_registrations#delete', as: :delete_gym_registration
 end

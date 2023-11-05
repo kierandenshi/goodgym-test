@@ -13,7 +13,7 @@ class GymRegistrationsController < ApplicationController
   end
 
   def delete
-    @gym_registration = GymRegistration.find(params[:id])
+    @gym_registration = GymRegistration.find_by(gym_member_id: params[:member_id], gym_session_id: params[:session_id])
     @gym_registration.destroy
   end
 

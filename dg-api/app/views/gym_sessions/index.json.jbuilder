@@ -1,6 +1,7 @@
 json.array! @gym_sessions do |session|
   json.id session.id
   json.name session.name
+  json.description session.description
   json.registrations_limit session.registrations_limit
   json.goodgymers session.gym_members
 

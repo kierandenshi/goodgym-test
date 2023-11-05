@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 export default function UserSelect({ users, currentUser, onSelect }) {
   return (
-    <select onChange={e => onSelect(e.target.value)}>
+    <select onChange={e => onSelect(e.target.value)} value={currentUser}>
       {users.map(user => (
-        <option key={user.id} value={user.id} selected={currentUser === user.id}>
+        <option key={user.id} value={user.id}>
           {user.first_name} {user.last_name}
         </option>
       ))}
