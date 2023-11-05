@@ -1,35 +1,49 @@
 # Ruby-on-Rails-test
 
-Technical test 
+Technical test solution.
 
-## Brief
-GoodGym organises sessions where you do good and get fit all across the UK. There are hundreds of sessions taking place in the country every day. 
+## API
 
-We would like you to build a rails backend to serve a frontend (preferably react) which you also have to build. The frontend should display sessions, ability for users to sign up to a session, confirmation those users have signed up and display of the number of users signed up for the session. 
+Pre-requisites:
+- Ruby 3.2.2
+- Sqlite3 >= 3.3
 
-Data structure
+NOTE: The api is located in the `dg-api` subdirectory.
 
-```goodgymer
-  - name
-  - area_id
+To install the api, run the following commands:
 
-session
-  - name
-  - area_id
-  - registration_limit
+- `bundle install`
+- `bin/rails db:create`
+- `bin/rails db:migrate`
+- `bin/rails db:seed`
 
-registration
-  - goodgymer_id
-  - session_id
-```
+Start the api with `bin/rails server`. The api will be available at `http://localhost:3000`.
 
-Example of a Session card:
-![image](https://github.com/good-gym/ruby-on-rails-test/assets/117165036/1ae6f3a1-dd53-4149-a861-c99f8514683c)
+To run the tests, use `bin/rspec`.
+
+## UI
+
+Pre-requisites:
+- Node 16+
+
+NOTE: The ui is located in the `dg-ui` subdirectory.
+
+To install the ui, run `npm install`
+
+To start the ui, run `npm run dev`. The ui will be available at `http://localhost:5173`
+
+To run the tests, use `npm run test`
+
+## General notes
+
+The app is pre-seeded with goodgymers, areas and sessions. The current goodgymer can be changed at any time with the "Sign in as user" control located top left.
+
+## Troubleshooting
+
+If the ui displays only a blank screen, please check the api is running on port 3000. If this port causes conflicts, the api can be started on another port with the `-p` switch - e.g. `bin/rails server -p 3333`. If this is done, the ui code will need to be updated - `src/App.jsx:8` should be changed to, e.g. `http://localhost:3333`.
 
 
-### Instructions
-Please implement this feature using Ruby on Rails and React.
 
-Please consider providing suitable documentation (e.g. a README) and simple tests.
 
-We’re not expecting you to take days to build this - ideally this should take no more than a few hours. 
+
+
