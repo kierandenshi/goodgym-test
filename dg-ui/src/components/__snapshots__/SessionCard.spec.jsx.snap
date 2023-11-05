@@ -1,0 +1,170 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`UserSelect test > should match the component snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="card"
+      >
+        <div
+          class="card-header"
+        >
+          <span
+            class="card-title"
+          >
+            Brighton & Hove
+          </span>
+          <span
+            class="card-title"
+          >
+            Mega session
+          </span>
+        </div>
+        <div
+          class="card-body"
+        >
+          <p>
+            This is a mega session
+          </p>
+          <div
+            class="card-avatars"
+          >
+            <div
+              class="avatar"
+              title="Kilgore Trout"
+            >
+              <span>
+                K
+                T
+              </span>
+            </div>
+            <div
+              class="avatar"
+              title="Billy Pilgrim"
+            >
+              <span>
+                B
+                P
+              </span>
+            </div>
+          </div>
+          <div>
+            You and 1 other GoodGymer is going
+          </div>
+          <button>
+            Leave session
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="card"
+    >
+      <div
+        class="card-header"
+      >
+        <span
+          class="card-title"
+        >
+          Brighton & Hove
+        </span>
+        <span
+          class="card-title"
+        >
+          Mega session
+        </span>
+      </div>
+      <div
+        class="card-body"
+      >
+        <p>
+          This is a mega session
+        </p>
+        <div
+          class="card-avatars"
+        >
+          <div
+            class="avatar"
+            title="Kilgore Trout"
+          >
+            <span>
+              K
+              T
+            </span>
+          </div>
+          <div
+            class="avatar"
+            title="Billy Pilgrim"
+          >
+            <span>
+              B
+              P
+            </span>
+          </div>
+        </div>
+        <div>
+          You and 1 other GoodGymer is going
+        </div>
+        <button>
+          Leave session
+        </button>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

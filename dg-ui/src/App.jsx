@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import SessionCard from './components/SessionCard';
 import UserSelect from './components/UserSelect';
-import Notices from './components/Notices';
 import './normalize.css';
 import './App.css';
 
@@ -11,7 +10,6 @@ function App() {
   const [goodgymers, setGoodgymers] = useState([]);
   const [sessions, setSessions] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
-  const [notice, setNotice] = useState(null);
 
   useEffect(() => {
     axios.get(`${baseUrl}/goodgymers.json`).then((response) => {
@@ -53,7 +51,6 @@ function App() {
   return currentUser ? (
     <div className="app">
       <div className='app-header'>
-        <h1>GoodGym</h1>
         <div className='app-login'>
           <span>Sign in as user:</span>
           <UserSelect users={goodgymers} currentUser={currentUser} onSelect={setCurrentUser} />
@@ -72,11 +69,6 @@ function App() {
           />
         )}
       </div>
-
-      {notice ?
-        <div className='app-notices'>
-          <Notices notice={notice} />
-        </div> : null}
     </div>
   ) : null;
 }

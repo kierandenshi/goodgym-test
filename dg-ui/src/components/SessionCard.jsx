@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import Avatar from './Avatar';
 import './SessionCard.css';
@@ -43,6 +42,7 @@ SessionCard.propTypes = {
   session: PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
+    description: PropTypes.string,
     area: PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
@@ -55,4 +55,5 @@ SessionCard.propTypes = {
   }).isRequired,
   currentUser: PropTypes.string.isRequired,
   joinSession: PropTypes.func.isRequired,
+  leaveSession: PropTypes.func.isRequired
 }
