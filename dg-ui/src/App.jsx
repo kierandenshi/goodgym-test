@@ -5,7 +5,7 @@ import UserSelect from "./components/UserSelect";
 import Modal from "./components/Modal";
 import "./App.css";
 
-const baseUrl = "http://localhost:4000";
+const baseUrl = "http://localhost:3000";
 function App() {
   const [goodgymers, setGoodgymers] = useState([]);
   const [sessions, setSessions] = useState([]);
