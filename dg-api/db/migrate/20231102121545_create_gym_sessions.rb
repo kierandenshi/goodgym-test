@@ -1,6 +1,6 @@
 class CreateGymSessions < ActiveRecord::Migration[7.1]
   def change
-    create_table :gym_sessions, id: :uuid do |t|
+    create_table :gym_sessions, id: :integer do |t|
       t.string :name
       t.integer :registrations_limit
 

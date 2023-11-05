@@ -11,42 +11,24 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.1].define(version: 2023_11_03_164421) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "pgcrypto"
-  enable_extension "plpgsql"
-
-  create_table "gym_areas", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "gym_areas", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "gym_members", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "gym_members", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "gym_registrations", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "gym_member_id", null: false
-    t.uuid "gym_session_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["gym_member_id"], name: "index_gym_registrations_on_gym_member_id"
-    t.index ["gym_session_id", "gym_member_id"], name: "index_gym_registrations_on_gym_session_id_and_gym_member_id", unique: true
-    t.index ["gym_session_id"], name: "index_gym_registrations_on_gym_session_id"
-  end
+# Could not dump table "gym_registrations" because of following StandardError
+#   Unknown type 'uuid' for column 'gym_member_id'
 
-  create_table "gym_sessions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "name"
-    t.integer "registrations_limit"
-    t.uuid "gym_area_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text "description"
-    t.index ["gym_area_id"], name: "index_gym_sessions_on_gym_area_id"
-  end
+# Could not dump table "gym_sessions" because of following StandardError
+#   Unknown type 'uuid' for column 'gym_area_id'
 
   add_foreign_key "gym_registrations", "gym_members"
   add_foreign_key "gym_registrations", "gym_sessions"
