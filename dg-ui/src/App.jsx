@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import SessionCard from './components/SessionCard';
 import UserSelect from './components/UserSelect';
-// import './normalize.css';
 import './App.css';
 
 const baseUrl = 'http://localhost:4000';
