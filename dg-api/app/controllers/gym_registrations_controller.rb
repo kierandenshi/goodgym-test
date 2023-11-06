@@ -4,7 +4,10 @@ class GymRegistrationsController < ApplicationController
   end
 
   def create
-    @gym_registration = GymRegistration.new(gym_registration_params)
+    @gym_registration = GymRegistration.new(
+      gym_member_id: gym_registration_params[:gym_member_id][-1].to_i,
+      gym_session_id: gym_registration_params[:gym_session_id][-1].to_i
+    )
     if @gym_registration.save
       render json: @gym_registration, status: :created, location: @gym_registration
     else
@@ -13,7 +16,10 @@ class GymRegistrationsController < ApplicationController
   end
 
   def delete
-    @gym_registration = GymRegistration.find_by(gym_member_id: params[:member_id], gym_session_id: params[:session_id])
+    @gym_registration = GymRegistration.find_by(
+      gym_member_id: params[:member_id][-1.to_i],
+      gym_session_id: params[:session_id][-1].to_i
+    )
     @gym_registration.destroy
   end
 
